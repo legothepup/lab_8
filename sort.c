@@ -39,7 +39,7 @@ void merge(int arr[], int l, int m, int r)
     int n1 = m - l + 1;
     int n2 = r - m;
 
-    // Allocate memory for temporary arrays
+    
     int* L = (int*)Alloc(n1 * sizeof(int));
     int* R = (int*)Alloc(n2 * sizeof(int));
 
@@ -49,10 +49,11 @@ void merge(int arr[], int l, int m, int r)
     for (j = 0; j < n2; j++)
         R[j] = arr[m + 1 + j];
 
-    // Merge the temporary arrays back into arr[l..r]
+    
     i = 0; // Initial index of first subarray
     j = 0; // Initial index of second subarray
     k = l; // Initial index of merged subarray
+	
     while (i < n1 && j < n2) {
         if (L[i] <= R[j]) {
             arr[k] = L[i];
@@ -79,17 +80,15 @@ void merge(int arr[], int l, int m, int r)
         k++;
     }
 
-    // Deallocate memory for temporary arrays
+    
     DeAlloc(L);
     DeAlloc(R);
 }
 
-// implement merge sort
-// extraMemoryAllocated counts bytes of extra memory allocated
 void mergeSort(int pData[], int l, int r)
 {
 	if (l < r) {
-        // Same as (l+r)/2, but avoids overflow for large l and r
+        
         int m = l + (r - l) / 2;
 
         // Sort first and second halves
